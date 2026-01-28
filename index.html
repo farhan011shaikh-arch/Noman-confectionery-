@@ -1,220 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noman Confectionery</title>
+  <meta charset="UTF-8">
+  <title>Numan Confectionery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#fff6ea;
-}
-header{
-  background:#a52a2a;
-  color:white;
-  padding:15px;
-  text-align:center;
-}
-header img{
-  width:80px;
-  border-radius:50%;
-}
-nav{
-  background:#ffddb3;
-  padding:10px;
-  text-align:center;
-}
-nav button{
-  margin:5px;
-  padding:8px 14px;
-  border:none;
-  border-radius:5px;
-  background:#a52a2a;
-  color:white;
-  cursor:pointer;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
 
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:15px;
-  padding:15px;
-}
+    header {
+      background: #8b0000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-.card{
-  background:white;
-  padding:10px;
-  border-radius:10px;
-  text-align:center;
-  box-shadow:0 0 5px #aaa;
-}
-.card img{
-  width:100%;
-  height:120px;
-  object-fit:cover;
-  border-radius:8px;
-}
-.price{
-  color:green;
-  font-weight:bold;
-}
-.buy{
-  background:#28a745;
-  color:white;
-  border:none;
-  padding:6px 10px;
-  border-radius:5px;
-  margin-top:5px;
-}
-.del{
-  background:red;
-  color:white;
-  border:none;
-  padding:5px;
-  margin-top:5px;
-}
+    nav {
+      background: #ff9800;
+      padding: 10px;
+      text-align: center;
+    }
 
-/* Admin */
-#admin{
-  display:none;
-  padding:15px;
-  background:#fff;
-  margin:10px;
-  border-radius:10px;
-}
+    nav a {
+      color: white;
+      margin: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-input,select{
-  width:100%;
-  padding:6px;
-  margin:5px 0;
-}
+    .hero {
+      background: #fff3e0;
+      padding: 25px;
+      text-align: center;
+    }
 
-.instagram{
-  position:fixed;
-  bottom:90px;
-  right:15px;
-  background:#E1306C;
-  color:white;
-  padding:12px;
-  border-radius:50%;
-  text-decoration:none;
-  font-size:20px;
-}
+    .section-title {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 24px;
+    }
 
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:15px;
-  background:#25D366;
-  color:white;
-  padding:12px;
-  border-radius:50%;
-  text-decoration:none;
-  font-size:20px;
-}
-footer{
-  text-align:center;
-  padding:10px;
-  background:#222;
-  color:white;
-}
-</style>
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .product {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .product img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .contact {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
 </head>
 
 <body>
 
+<!-- HEADER WITH LOGO -->
 <header>
-<img src="https://i.imgur.com/3XqJZpC.png">
-<h2>Noman Confectionery</h2>
-<p>Bakery • Grocery • Dry Fruits</p>
+  <div style="display:flex;justify-content:center;align-items:center;gap:10px;">
+    <div style="font-size:40px;">🍰</div>
+    <div>
+      <h1 style="margin:0;">NUMAN CONFECTIONERY</h1>
+      <p style="margin:0;">Bakery • Grocery • Cold Drinks</p>
+    </div>
+  </div>
+  <p>📍 Kunda, Pratapgarh | 🕗 8 AM – 11 PM</p>
 </header>
 
 <nav>
-<button onclick="filter('all')">All</button>
-<button onclick="filter('bakery')">Bakery</button>
-<button onclick="filter('grocery')">Grocery</button>
-<button onclick="filter('dry')">Dry Fruits</button>
-<button onclick="unlock()">Admin</button>
+  <a href="#">Home</a>
+  <a href="#products">Products</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<div id="admin">
-<h3>Add Product</h3>
-<input id="pname" placeholder="Product name">
-<input id="pprice" placeholder="Price">
-<select id="pcat">
-  <option value="bakery">Bakery</option>
-  <option value="grocery">Grocery</option>
-  <option value="dry">Dry Fruits</option>
-</select>
-<input type="file" id="pimg">
-<button onclick="addProduct()">Add</button>
+<div class="hero">
+  <h2>Fresh Bakery & Daily Grocery Items</h2>
+  <p>Quality Products at Best Price</p>
 </div>
 
-<div class="products" id="productList"></div>
+<h2 class="section-title">Our Products</h2>
 
-<a class="instagram" href="https://www.instagram.com/" target="_blank">📸</a>
-<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank">💬</a>
+<section class="products" id="products">
+
+  <div class="product">
+    <img src="https://source.unsplash.com/300x200/?cake">
+    <h3>Cakes</h3>
+    <p>Custom & Fresh Cakes</p>
+    <a class="btn" href="https://wa.me/918369701874">Order on WhatsApp</a>
+  </div>
+
+  <div class="product">
+    <img src="https://source.unsplash.com/300x200/?pastry">
+    <h3>Pastry</h3>
+    <p>Chocolate • Vanilla</p>
+    <a class="btn" href="https://wa.me/918369701874">Order Now</a>
+  </div>
+
+  <div class="product">
+    <img src="https://source.unsplash.com/300x200/?bread">
+    <h3>Bread & Rusk</h3>
+    <p>Fresh Everyday</p>
+    <a class="btn" href="https://wa.me/918369701874">Buy Now</a>
+  </div>
+
+  <div class="product">
+    <img src="https://source.unsplash.com/300x200/?dry-fruits">
+    <h3>Dry Fruits</h3>
+    <p>Good Quality</p>
+    <a class="btn" href="https://wa.me/918369701874">Order</a>
+  </div>
+
+  <div class="product">
+    <img src="https://source.unsplash.com/300x200/?cold-drink">
+    <h3>Cold Drinks</h3>
+    <p>All Brands Available</p>
+    <a class="btn" href="https://wa.me/918369701874">Order</a>
+  </div>
+
+</section>
+
+<div class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <p>📞 +91 83697 01874</p>
+  <p>📍 Kunda, Pratapgarh (UP)</p>
+
+  <h3>Find Us on Map</h3>
+  <iframe 
+    src="https://www.google.com/maps?q=Kunda%20Pratapgarh&output=embed"
+    width="100%" height="250"
+    style="border:0;" allowfullscreen="" loading="lazy">
+  </iframe>
+
+  <br><br>
+  <a class="btn" href="https://wa.me/918369701874">WhatsApp Order</a>
+</div>
 
 <footer>
-© 2026 Noman Confectionery
+  <p>© 2026 Numan Confectionery | All Rights Reserved</p>
 </footer>
-
-<script>
-let products = JSON.parse(localStorage.getItem("products")) || [];
-
-function render(cat="all"){
-  let html="";
-  products.forEach((p,i)=>{
-    if(cat=="all" || p.cat==cat){
-      html+=`
-      <div class="card">
-        <img src="${p.img}">
-        <h4>${p.name}</h4>
-        <div class="price">₹${p.price}</div>
-        <a class="buy" href="https://wa.me/91XXXXXXXXXX?text=I want ${p.name}">Buy</a>
-        <br>
-        <button class="del" onclick="del(${i})">Delete</button>
-      </div>`;
-    }
-  });
-  document.getElementById("productList").innerHTML=html;
-}
-
-function addProduct(){
-  let file=document.getElementById("pimg").files[0];
-  let reader=new FileReader();
-  reader.onload=function(){
-    products.push({
-      name:pname.value,
-      price:pprice.value,
-      cat:pcat.value,
-      img:reader.result
-    });
-    localStorage.setItem("products",JSON.stringify(products));
-    render();
-  }
-  reader.readAsDataURL(file);
-}
-
-function del(i){
-  products.splice(i,1);
-  localStorage.setItem("products",JSON.stringify(products));
-  render();
-}
-
-function filter(cat){ render(cat); }
-
-function unlock(){
-  let p=prompt("Enter Admin Password");
-  if(p=="1234"){
-    document.getElementById("admin").style.display="block";
-  }
-}
-
-render();
-</script>
 
 </body>
 </html>
